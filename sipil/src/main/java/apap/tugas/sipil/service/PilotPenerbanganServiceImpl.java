@@ -9,5 +9,5 @@ import java.util.NoSuchElementException;
 
 @Service
 @Transactional
-public class PilotPenerbanganServiceImpl {
+public class PilotPenerbanganServiceImpl implements  PilotPenerbanganService{
 }

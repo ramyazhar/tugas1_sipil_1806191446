@@ -9,5 +9,5 @@ import java.util.NoSuchElementException;
 
 @Service
 @Transactional
-public class MaskapaiServiceImpl {
+public class MaskapaiServiceImpl implements  MaskapaiService{
 }

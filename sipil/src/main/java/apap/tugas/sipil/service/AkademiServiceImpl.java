@@ -8,5 +8,5 @@ import java.util.NoSuchElementException;
 
 @Service
 @Transactional
-public class AkademiServiceImpl {
+public class AkademiServiceImpl implements AkademiService{
 }
