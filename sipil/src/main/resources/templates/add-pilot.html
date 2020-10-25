@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://thymeleaaf.org">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Add Pilot</title>
 </head>
 <body>
-$END$
+<h2 th:text="'pilot dengan nip ' + ${nipPilot} + ' berhasil ditambahkan.'"></h2>
+<a href="/hotel/viewall">Kembali</a>
 </body>
 </html>

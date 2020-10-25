@@ -19,8 +19,8 @@ public class MaskapaiModel implements Serializable{
 
     @NotNull
     @Size(max=255)
-    @Column(name="namaMaskapai", nullable = false)
-    private String namaMaskapai;
+    @Column(name="nama", nullable = false)
+    private String nama;
 
     @NotNull
     @Size(max=255)
@@ -39,11 +39,11 @@ public class MaskapaiModel implements Serializable{
     }
 
     public String getNamaMaskapai() {
-        return namaMaskapai;
+        return nama;
     }
 
     public void setNamaMaskapai(String namaMaskapai) {
-        this.namaMaskapai = namaMaskapai;
+        this.nama = namaMaskapai;
     }
 
     public String getKode() {

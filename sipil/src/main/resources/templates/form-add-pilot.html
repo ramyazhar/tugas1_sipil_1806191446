@@ -1,10 +1,57 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Form Add Pilot</title>
+
 </head>
 <body>
-$END$
+<h2>Hello</h2>
+<h3>tambah pilot</h3>
+<form th:action="@{/pilot/add}"th:object="${pilot}" method = "POST">
+    Nama <br>
+    <input type="text" id="namapilot" name="namaPilot"/>
+    <br>
+    NIK <br>
+    <input type="text" name="nik"/>
+    <br>
+    tempat Lahir <br>
+    <input type="text" name="tempat_lahir"/>
+    <br>
+    Tanggal Lahir <br>
+    <input type="date" name="tanggal_lahir"/>
+    <br>
+    jenis Kelamin <br>
+    <select name="jenis_kelamin">
+        <option value="1">laki-laki</option>
+        <option value="2">perempuan</option>
+    </select>
+    <br>
+    Sekolah <br>
+    <select name="akademi.id">
+        <option value="1">Sekolah Terbang Tinggi</option>
+        <option value="2">Sekolah Angkasa Luar</option>
+        <option value="3">Sekolah Galaksi</option>
+        <option value="4">Sekolah Daun Hijau</option>
+        <option value="5">Sekolah Angkatan Udara</option>
+        <option value="6">Sekolah Angkasa Udara</option>
+    </select>
+    <br>
+    <br>
+    Maskapai <br>
+    <select name="maskapai.id">
+        <option value="1">LienAir</option>
+        <option value="2">SriAir</option>
+        <option value="3">AsiaAir</option>
+        <option value="4">GarudaAir</option>
+        <option value="5">FlyEmiret</option>
+        <option value="6">ButikAir</option>
+        <option value="7">JakAir</option>
+    </select>
+    <br>
+    <input type="hidden" th:value="${pilot.nip}" th:attr="name='nip'"/>
+
+    <button type="submit">Submit</button>
+</form>
 </body>
 </html>

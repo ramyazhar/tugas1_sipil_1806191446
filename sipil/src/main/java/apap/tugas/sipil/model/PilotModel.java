@@ -18,7 +18,6 @@ package apap.tugas.sipil.model;
 @Table(name="pilot")
 public class PilotModel implements Serializable{
     @Id
-    @Size(max=20)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
@@ -38,7 +37,7 @@ public class PilotModel implements Serializable{
     private String nik;
 
     @NotNull
-    @DateTimeFormat
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     @Column(name="tanggal_lahir", nullable = false)
     private Date tanggal_lahir;
 

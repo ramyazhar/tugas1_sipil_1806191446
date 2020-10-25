@@ -1,5 +1,6 @@
 package apap.tugas.sipil.controller;
 
+import apap.tugas.sipil.model.PilotModel;
 import apap.tugas.sipil.service.AkademiService;
 import apap.tugas.sipil.service.MaskapaiService;
 import apap.tugas.sipil.service.PilotPenerbanganService;
@@ -31,4 +32,42 @@ public class PilotController {
     private String home() {
         return "home";
     }
+
+    @GetMapping("/pilot")
+    public String viewAllpilot(Model model){
+        List<PilotModel> pilot = pilotService.getPilotList();
+        model.addAttribute("listPilot", pilot);
+        return "allpilot";
+    }
+
+    @GetMapping("/pilot/add")
+    public String addPilotFormPage(Model model){
+        model.addAttribute("pilot", new PilotModel());
+        return "form-add-pilot";
+    }
+
+    @PostMapping("/pilot/add")
+    public String addPilotSubmit(
+            @ModelAttribute PilotModel pilot,
+            Model model) {
+        pilot.setNip(pilotService.getNIP(pilot));
+        pilotService.addPilot(pilot);
+        model.addAttribute("nipPilot", pilotService.getNIP(pilot));
+        return "add-pilot";
+    }
+
+    @GetMapping("/pilot/{nipPilot}")
+    public String findPilotByNipPilot(
+            @PathVariable String nipPilot,
+            Model model){
+        PilotModel pilot = pilotService.getPilotByNipPilot(nipPilot);
+        System.out.println("ini nipnya");
+        System.out.println(pilot.getNip());
+        model.addAttribute("pilot",pilot);
+        return "view-by-nippilot";
+    }
+
+
+
+
 }
