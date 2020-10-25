@@ -40,17 +40,17 @@
         <tr>
             <td th:text="'ID' "></td>
             <td th:text="': '+ ${pilot.id}"></td>
-            <td th:text=" "></td>
+            <td></td>
         </tr>
         <tr>
             <td th:text="'Nama' "></td>
             <td th:text="': '+ ${pilot.namaPilot}"></td>
-            <td th:text=" "></td>
+            <td></td>
         </tr>
         <tr>
             <td th:text="'Nik' "></td>
             <td th:text="': '+ ${pilot.nik}"></td>
-            <td th:text=" "></td>
+            <td></td>
         </tr>
         <tr>
             <td th:text="'Jenis Kelamin' "></td>
@@ -58,22 +58,22 @@
                 <div th:if="${pilot.jenis_kelamin == 1}">: Laki-laki</div>
                 <div th:if="${pilot.jenis_kelamin == 2}">: Perempuan</div>
             </td>
-            <td th:text=" "></td>
+            <td></td>
         </tr>
         <tr>
             <td th:text="'NIP' "></td>
             <td th:text="': '+ ${pilot.nip}"></td>
-            <td th:text=" "></td>
+            <td></td>
         </tr>
         <tr>
             <td th:text="'Tempat Lahir' "></td>
             <td th:text="': '+ ${pilot.tempat_lahir}"></td>
-            <td th:text=" "></td>
+            <td></td>
         </tr>
         <tr>
             <td th:text="'Tanggal Lahir' "></td>
             <td th:text="': '+ ${#dates.format(pilot.tanggal_lahir, 'dd/MM/yyyy')}"></td>
-            <td th:text=" "></td>
+            <td></td>
         </tr>
         <tr>
             <td th:text="'Sekolah' "></td>
@@ -85,7 +85,7 @@
                 <div th:if="${pilot.akademi.id == 5}">: Sekolah Angkatan Udara</div>
                 <div th:if="${pilot.akademi.id == 6}">: Sekolah Angkasa Udara</div>
             </td>
-            <td th:text=" "></td>
+            <td></td>
         </tr>
         <tr>
             <td th:text="'Maskapai' "></td>
@@ -98,7 +98,7 @@
                 <div th:if="${pilot.maskapai.id == 6}">: ButikAir</div>
                 <div th:if="${pilot.maskapai.id == 7}">: JakAir</div>
             </td>
-            <td th:text=" "></td>
+            <td></td>
         </tr>
         <tr>
             <td></td>
