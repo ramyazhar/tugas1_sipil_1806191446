@@ -14,7 +14,6 @@ import java.util.List;
 @Table(name="penerbangan")
 public class PenerbanganModel implements Serializable{
     @Id
-    @Size(max=20)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
@@ -34,7 +33,7 @@ public class PenerbanganModel implements Serializable{
     private String kota_tujuan;
 
     @NotNull
-    @DateTimeFormat
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     @Column(name="waktu", nullable = false)
     private Date waktu;
 

@@ -40,13 +40,13 @@ public class PilotController {
         return "allpilot";
     }
 
-    @GetMapping("/pilot/add")
+    @GetMapping("/pilot/tambah")
     public String addPilotFormPage(Model model){
         model.addAttribute("pilot", new PilotModel());
         return "form-add-pilot";
     }
 
-    @PostMapping("/pilot/add")
+    @PostMapping("/pilot/tambah")
     public String addPilotSubmit(
             @ModelAttribute PilotModel pilot,
             Model model) {

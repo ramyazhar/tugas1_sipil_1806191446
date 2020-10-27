@@ -17,7 +17,6 @@ import java.util.List;
 @Table(name="pilotpenerbangan")
 public class PilotPenerbanganModel implements Serializable{
     @Id
-    @Size(max=20)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
