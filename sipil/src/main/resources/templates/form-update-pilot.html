@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Data Hotel</title>
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+<body>
+<nav th:replace="fragments/fragment :: navbar"></nav>
+<h2>Change Pilot</h2>
+<form th:action="@{/pilot/ubah}" th:object="${pilot}" method="POST">
+    <input type="hidden" th:field="*{id}">
+    <input type="hidden" th:field="*{tempat_lahir}">
+    Nama <br>
+    <input type="text" name="namaPilot" th:value="*{namaPilot}"/>
+    <br><br>
+    NIK <br>
+    <input type="text" name="nik" th:value="*{nik}"/>
+    <br><br>
+    Tanggal Lahir <br>
+    <input type="date" name="tanggal_lahir" th:field="*{tanggal_lahir}"/>
+    <br><br>
+    Jenis Kelamin <br>
+    <select name="jenis_kelamin" th:field="*{jenis_kelamin}">
+        <option value="1">Laki-laki</option>
+        <option value="2">Perempuan</option>
+    </select>
+    <br><br>
+    Sekolah <br>
+    <select name="akademi.id" th:field="*{akademi.id}">
+        <option value="1">Sekolah Terbang Tinggi</option>
+        <option value="2">Sekolah Angkasa Luar</option>
+        <option value="3">Sekolah Galaksi</option>
+        <option value="4">Sekolah Daun Hijau</option>
+        <option value="5">Sekolah Angkatan Udara</option>
+        <option value="6">Sekolah Angkasa Udara</option>
+    </select>
+    <br><br>
+    Maskapai <br>
+    <select name="maskapai.id" th:field="*{maskapai.id}">
+        <option value="1">LienAir</option>
+        <option value="2">SriAir</option>
+        <option value="3">AsiaAir</option>
+        <option value="4">GarudaAir</option>
+        <option value="5">FlyEmiret</option>
+        <option value="6">ButikAir</option>
+        <option value="7">JakAir</option>
+    </select>
+    <br><br>
+    <button type="submit" name="submit">Submit</button>
+</form>
+</body>
+</html>

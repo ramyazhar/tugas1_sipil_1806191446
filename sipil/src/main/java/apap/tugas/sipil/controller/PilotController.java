@@ -67,6 +67,25 @@ public class PilotController {
         return "view-by-nippilot";
     }
 
+    @RequestMapping(value="pilot/ubah/{nipPilot}", method=RequestMethod.GET)
+    public String changePilotFormPage(@PathVariable String nipPilot, Model model) {
+        PilotModel pilot = pilotService.getPilotByNipPilot(nipPilot);
+        model.addAttribute("pilot", pilot);
+        if (pilot == null) {
+            return "/";
+        }
+        return "form-update-pilot";
+    }
+    @PostMapping("/pilot/ubah")
+    public String ubahPilotFormSubmit(
+            @ModelAttribute PilotModel pilot,
+            Model model
+    ){
+        System.out.println(pilot);
+        PilotModel pilotUpdated = pilotService.updatePilot(pilot);
+        model.addAttribute("pilot", pilotUpdated);
+        return "update-pilot";
+    }
 
 
 

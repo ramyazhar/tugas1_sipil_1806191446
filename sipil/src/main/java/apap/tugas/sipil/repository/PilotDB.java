@@ -8,5 +8,6 @@ import java.util.Optional;
 @Repository
 public interface PilotDB extends JpaRepository<PilotModel,Long> {
     PilotModel findByNip(String nip);
+    Optional<PilotModel> findById(Long id);
 
 }
