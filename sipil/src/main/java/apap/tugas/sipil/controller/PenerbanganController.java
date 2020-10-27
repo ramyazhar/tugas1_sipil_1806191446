@@ -3,6 +3,7 @@ package apap.tugas.sipil.controller;
 
 import apap.tugas.sipil.model.PenerbanganModel;
 import apap.tugas.sipil.model.PilotModel;
+import apap.tugas.sipil.model.PilotPenerbanganModel;
 import apap.tugas.sipil.service.PenerbanganService;
 import apap.tugas.sipil.service.PilotPenerbanganService;
 import apap.tugas.sipil.service.PilotService;
@@ -12,6 +13,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -31,6 +34,13 @@ public class PenerbanganController {
     public String addPenerbanganFormPage(Model model){
         model.addAttribute("penerbangan", new PenerbanganModel());
         return "form-add-penerbangan";
+    }
+
+    @GetMapping("/penerbangan")
+    public String viewAllPenerbangan(Model model){
+        List<PenerbanganModel> listPenerbangan = penerbanganService.getListPenerbangan();
+        model.addAttribute("listPenerbangan", listPenerbangan);
+        return "allpenerbangan";
     }
 
     @PostMapping("/penerbangan/tambah")
@@ -59,17 +69,21 @@ public class PenerbanganController {
         return "update-penerbangan";
     }
 
-    @PostMapping("/penerbangan/{idPenerbangan}/pilot/tambah")
-    public String addPilotPenerbangan(
-            @PathVariable Long idPenerbangan,
-            @ModelAttribute PenerbanganModel penerbangan, PilotModel pilot,
-            Model model) {
-        Optional<PenerbanganModel> targetPenerbangan = penerbanganService.getPenerbanganByID(idPenerbangan);
-        penerbanganService.addPenerbangan(penerbangan);
-        pilotService
-        model.addAttribute("penerbangan", penerbangan);
-        return "add-penerbangan";
-    }
+//    @PostMapping("/penerbangan/{idPenerbangan}/pilot/tambah")
+//    public String addPilotPenerbangan(
+//            @PathVariable Long idPenerbangan,
+//            @ModelAttribute PenerbanganModel penerbangan, PilotModel pilot,
+//            Model model) {
+//        PilotModel pilotIni = new PilotModel();
+//        PenerbanganModel penerbanganIni = new PenerbanganModel();
+//        PilotPenerbanganModel pilotPenerbanganIni = new PilotPenerbanganModel();
+//        ArrayList<PilotPenerbanganModel> listPilotPenerbanganIni = new ArrayList<>();
+//
+//
+//        Optional<PenerbanganModel> targetPenerbangan = penerbanganService.getPenerbanganByID(idPenerbangan);
+//        model.addAttribute("penerbangan", penerbangan);
+//        return "add-penerbangan";
+//    }
 
 
 

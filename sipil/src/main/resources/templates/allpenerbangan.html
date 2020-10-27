@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>View All Pilot</title>
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+<body>
+<nav th:replace="fragments/fragment :: navbar"></nav>
+<div class="container">
+    <h2>Daftar Penerbangan</h2>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>No</th>
+            <th>Kode Penerbangan</th>
+            <th>Waktu</th>
+            <th>Kota Asal</th>
+            <th>Kota Tujuan</th>
+            <th></th>
+            <th>Action</th>
+            <th></th>
+
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="penerbangan, iterationStatus : ${listPenerbangan}">
+            <td th:text="${iterationStatus.count}"></td>
+            <td th:text="${penerbangan.kode}"></td>
+            <td th:text="${#dates.format(penerbangan.waktu, 'HH:mm dd-MM-yyyy')}"></td>
+            <td th:text="${penerbangan.kota_asal}"></td>
+            <!--            <td th:text="${pilot.tanggal_lahir}"></td>-->
+            <td th:text="${penerbangan.kota_tujuan}"></td>
+            <td><a th:href="@{/penerbangan/detail/}+${penerbangan.id}" class="btn btn-outline-info">lihat</a></td>
+            <td><a th:href="@{/penerbangan/ubah/}+${penerbangan.id}" class="btn btn-outline-secondary">Ubah</a></td>
+            <td><a th:href="@{/penerbangan/hapus/}+${penerbangan.id}" class="btn btn-outline-danger">Hapus</a></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <br><br>
+    <a href="/">Kembali</a>
+</div>
+
+<nav th:replace="fragments/fragment :: footer" ></nav>
+</body>
+</html>
