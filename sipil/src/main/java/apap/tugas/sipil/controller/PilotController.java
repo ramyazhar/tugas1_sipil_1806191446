@@ -61,8 +61,6 @@ public class PilotController {
             @PathVariable String nipPilot,
             Model model){
         PilotModel pilot = pilotService.getPilotByNipPilot(nipPilot);
-        System.out.println("ini nipnya");
-        System.out.println(pilot.getNip());
         model.addAttribute("pilot",pilot);
         return "view-by-nippilot";
     }
@@ -71,9 +69,9 @@ public class PilotController {
     public String changePilotFormPage(@PathVariable String nipPilot, Model model) {
         PilotModel pilot = pilotService.getPilotByNipPilot(nipPilot);
         model.addAttribute("pilot", pilot);
-        if (pilot == null) {
-            return "/";
-        }
+//        if (pilot == null) {
+//            return "/";
+//        }
         return "form-update-pilot";
     }
     @PostMapping("/pilot/ubah")

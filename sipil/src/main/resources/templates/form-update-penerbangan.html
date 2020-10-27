@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Data Hotel</title>
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+<body>
+<nav th:replace="fragments/fragment :: navbar"></nav>
+<h2>Change Pilot</h2>
+<form th:action="@{/penerbangan/ubah}" th:object="${penerbangan}" method="POST">
+    <input type="hidden" th:field="*{id}">
+    kode <br>
+    <input type="text" name="kode" th:field="*{kode}"/>
+    <br><br>
+    Waktu <br>
+    <input type="datetime-local" name="waktu"  th:field="*{waktu}"/>
+    <br><br>
+    Kota Asal <br>
+    <input type="text" name="kota_asal" th:field="*{kota_asal}"/>
+    <br><br>
+    Kota tujuan <br>
+    <input type="text" name="kota_tujuan" th:field="*{kota_tujuan}">
+    <br><br>
+    <button type="submit" name="submit">Submit</button>
+</form>
+</body>
+</html>

@@ -7,8 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.util.List;
-import java.util.NoSuchElementException;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -20,5 +19,26 @@ public class PenerbanganServiceImpl implements PenerbanganService{
     @Override
     public void addPenerbangan(PenerbanganModel penerbangan){
         penerbanganDB.save(penerbangan);
+    }
+    @Override
+    public Optional<PenerbanganModel> getPenerbanganByID(Long id){
+      return penerbanganDB.findById(id);
+    }
+
+    @Override
+    public  PenerbanganModel updatePenerbangan(PenerbanganModel penerbangan){
+
+        PenerbanganModel targetPenerbangan = penerbanganDB.findById(penerbangan.getId()).get();
+        try {
+            targetPenerbangan.setKode(penerbangan.getKode());
+            targetPenerbangan.setKota_asal(penerbangan.getKota_asal());
+            targetPenerbangan.setKota_tujuan(penerbangan.getKota_tujuan());
+            targetPenerbangan.setWaktu(penerbangan.getWaktu());
+            penerbanganDB.save(penerbangan);
+            return targetPenerbangan;
+
+        } catch (NullPointerException nullException) {
+            return null;
+        }
     }
 }
