@@ -14,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -40,9 +41,45 @@ public class PenerbanganController {
     public String findPenerbanganByidPenerbangan(
             @PathVariable Long id,
             Model model){
+
+        PilotPenerbanganModel pilotPenerbangan = new PilotPenerbanganModel();
+        pilotPenerbangan.setPenerbangan(penerbanganService.getPenerbanganByID(id).get());
+        List<PilotModel> listPilot = pilotService.getPilotList();
         PenerbanganModel penerbangan = penerbanganService.getPenerbanganByID(id).get();
+        List<PilotPenerbanganModel> listPilotPenerbangan = penerbangan.getListPilotPenerbangan();
         model.addAttribute("penerbangan",penerbangan);
+        model.addAttribute("pilotPenerbangan", pilotPenerbangan);
+        model.addAttribute("listPilot",listPilot);
+        model.addAttribute("listPilotPenerbangan", listPilotPenerbangan);
         return "view-by-idpenerbangan";
+    }
+    @PostMapping("/penerbangan/{idPenerbangan}/pilot/tambah")
+    public String addPilotPenerbangan(
+            @PathVariable Long idPenerbangan,
+            @ModelAttribute PilotPenerbanganModel pilotpenerbangan,
+            Model model) {
+
+//        pilotpenerbangan.setTanggal_penugasan();
+        pilotPenerbanganService.addPilotPenerbangan(pilotpenerbangan);
+
+        return "add-pilotpenerbangan";
+
+
+        //        PilotPenerbanganModel pilotPenerbangan = new PilotPenerbanganModel();
+//        List<PilotPenerbanganModel> listPilotPenerbanganModel = penerbangan.getListPilotPenerbangan();
+//
+//        pilotPenerbangan.setPilot(pilot);
+//        pilotPenerbangan.setTanggal_penugasan(penerbangan.getWaktu());
+//        pilotPenerbangan.setPenerbangan(penerbangan);
+//        listPilotPenerbanganModel.add(pilotPenerbangan);
+//        pilot.setListPilotPenerbangan(listPilotPenerbanganModel);
+//
+//
+//        pilotPenerbanganService.addPilotPenerbangan(pilotPenerbangan);
+//        List<PilotModel> listPilot = pilotService.getPilotList();
+//        model.addAttribute("penerbangan", penerbangan);
+//        model.addAttribute("listPilot", listPilot);
+//        model.addAttribute("listPilotPenerbangan", listPilotPenerbanganModel);
     }
 
     @GetMapping("/penerbangan")
@@ -56,15 +93,6 @@ public class PenerbanganController {
     public String addPenerbanganSubmit(
             @ModelAttribute PenerbanganModel penerbangan,
             Model model) {
-//        PilotModel pilot = new PilotModel();
-//        PilotPenerbanganModel pilotPenerbangan = new PilotPenerbanganModel();
-//        List<PilotPenerbanganModel> listPilotPenerbanganModel = new ArrayList<>();
-//
-//        pilotPenerbangan.setPilot(pilot);
-//        pilotPenerbangan.setPenerbangan(penerbangan);
-//        listPilotPenerbanganModel.add(pilotPenerbangan);
-//        penerbangan.setListPilotPenerbangan(listPilotPenerbanganModel);
-//        pilotPenerbanganService.addPilotPenerbangan(pilotPenerbangan);
 
         penerbanganService.addPenerbangan(penerbangan);
 
@@ -88,44 +116,36 @@ public class PenerbanganController {
         model.addAttribute("penerbangan", penerbanganUpdated);
         return "update-penerbangan";
     }
+    @PostMapping(path = "/penerbangan/hapus")
+    public String removePenerbangan(
+           @RequestParam(required = false) Long penerbanganid,
+            Model model){
+        System.out.println(penerbanganid);
+        List<PilotPenerbanganModel> listPilotPenerbangan = penerbanganService.getPenerbanganByID(penerbanganid).get().getListPilotPenerbangan();
+        PenerbanganModel penerbangan = penerbanganService.getPenerbanganByID(penerbanganid).get();
+        if(listPilotPenerbangan.size() != 0 ){
 
-    @PostMapping("/penerbangan/{idPenerbangan}/pilot/tambah")
-    public String addPilotPenerbangan(
-            @PathVariable Long idPenerbangan,
-            @ModelAttribute PenerbanganModel penerbangan, PilotModel pilot,
-            Model model) {
-//        PilotModel pilotIni = new PilotModel();
-//        PenerbanganModel penerbanganIni = new PenerbanganModel();
-//        PilotPenerbanganModel pilotPenerbanganIni = new PilotPenerbanganModel();
-//        ArrayList<PilotPenerbanganModel> listPilotPenerbanganIni = new ArrayList<>();
-        PilotPenerbanganModel pilotPenerbangan = new PilotPenerbanganModel();
-        List<PilotPenerbanganModel> listPilotPenerbanganModel = new ArrayList<>();
+            model.addAttribute("penerbangan",penerbangan);
+            return "remove-penerbangan-gagal";
 
-        pilotPenerbangan.setPilot(pilot);
-        pilotPenerbangan.setPenerbangan(penerbangan);
-        listPilotPenerbanganModel.add(pilotPenerbangan);
-        pilot.setListPilotPenerbangan(listPilotPenerbanganModel);
-        penerbangan.setListPilotPenerbangan(listPilotPenerbanganModel);
-        pilotPenerbanganService.addPilotPenerbangan(pilotPenerbangan);
+        }else {
+            model.addAttribute("penerbangan",penerbangan);
+            penerbanganService.removePenerbangan(penerbangan);
+            return "remove-penerbangan-berhasil";
+        }
 
-        List<PilotModel> listPilot = pilotService.getPilotList();
-
-
-        Optional<PenerbanganModel> targetPenerbangan = penerbanganService.getPenerbanganByID(idPenerbangan);
-        model.addAttribute("penerbangan", penerbangan);
-        model.addAttribute("listPilot", listPilot);
-        model.addAttribute("listPilotPenerbangan", listPilotPenerbanganModel);
-        return "add-pilotpenerbangan";
     }
-    @PostMapping("/penerbangan/{idPenerbangan}/pilot/tambah/{idPilot}")
-    public String TambahPilotPenerbanganSubmit(
-            @ModelAttribute PenerbanganModel penerbangan,PilotModel pilot,
-            Model model
-    ){
-        PenerbanganModel penerbanganUpdated = penerbanganService.updatePenerbangan(penerbangan);
-        model.addAttribute("penerbangan", penerbanganUpdated);
-        return "update-penerbangan";
-    }
+
+
+//    @PostMapping("/penerbangan/{idPenerbangan}/pilot/tambah")
+//    public String TambahPilotPenerbanganSubmit(
+//            @ModelAttribute PenerbanganModel penerbangan,PilotModel pilot,
+//            Model model
+//    ){
+//
+//        model.addAttribute("pilot", pilot);
+//        return "submit-pilotpenerbangan";
+//    }
 
 
 

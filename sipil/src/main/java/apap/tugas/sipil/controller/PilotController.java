@@ -1,6 +1,7 @@
 package apap.tugas.sipil.controller;
 
 import apap.tugas.sipil.model.PilotModel;
+import apap.tugas.sipil.model.PilotPenerbanganModel;
 import apap.tugas.sipil.service.AkademiService;
 import apap.tugas.sipil.service.MaskapaiService;
 import apap.tugas.sipil.service.PilotPenerbanganService;
@@ -11,6 +12,11 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -45,7 +51,8 @@ public class PilotController {
         model.addAttribute("pilot", new PilotModel());
         return "form-add-pilot";
     }
-
+    //        List<PilotPenerbanganModel> listPilotPenerbanganModel = new ArrayList<>();
+//        pilot.setListPilotPenerbangan(listPilotPenerbanganModel);
     @PostMapping("/pilot/tambah")
     public String addPilotSubmit(
             @ModelAttribute PilotModel pilot,

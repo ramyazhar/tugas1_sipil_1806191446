@@ -21,7 +21,7 @@ public class PilotPenerbanganModel implements Serializable{
     private Long id;
 
     @NotNull
-    @DateTimeFormat
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     @Column(name="tanggal_penugasan", nullable = false)
     private Date tanggal_penugasan;
 

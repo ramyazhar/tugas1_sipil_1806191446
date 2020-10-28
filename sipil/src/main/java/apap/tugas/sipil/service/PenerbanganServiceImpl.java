@@ -47,4 +47,9 @@ public class PenerbanganServiceImpl implements PenerbanganService{
     public List<PenerbanganModel> getListPenerbangan(){
         return penerbanganDB.findAll();
     }
+
+    @Override
+    public void removePenerbangan(PenerbanganModel penerbangan){
+        penerbanganDB.delete(penerbangan);
+    }
 }

@@ -64,15 +64,8 @@
             <td></td>
         </tr>
 
-        <tr>
-            <td></td>
-            <td></td>
-            <td><a th:href="@{/penerbangan/ubah/}+${penerbangan.id}" class="btn btn-outline-secondary">Ubah</a></td>
-            <td><a th:href="@{/penerbangan/remove/}+${penerbangan.id}" class="btn btn-outline-danger">Hapus</a></td>
-        </tr>
         </tbody>
     </table>
-
     <form th:action="@{/penerbangan/{penerbanganid}/pilot/tambah(penerbanganid=${penerbangan.id}}"th:object="${pilotPenerbangan}" method = "POST">
         <tr th:each="pilotpenerbangan, iterationStatus : *{listPilotPenerbangan}">
             <select class="form-control" th:field="*{listPilotPenerbangan[__${iterationStatus.index}__].pilot}">
@@ -117,9 +110,7 @@
         </tbody>
     </table>
 
-
     <br><br>
-    <a href="/">Kembali</a>
 </div>
 
 </body>
