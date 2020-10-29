@@ -43,7 +43,10 @@ public class PenerbanganController {
             Model model){
 
         PilotPenerbanganModel pilotPenerbangan = new PilotPenerbanganModel();
-        pilotPenerbangan.setPenerbangan(penerbanganService.getPenerbanganByID(id).get());
+        PenerbanganModel penerbanganModelini = penerbanganService.getPenerbanganByID(id).get();
+        System.out.println(penerbanganModelini.getId());
+        pilotPenerbangan.setPenerbangan(penerbanganModelini);
+        System.out.println(pilotPenerbangan.getPenerbangan().getId());
         List<PilotModel> listPilot = pilotService.getPilotList();
         PenerbanganModel penerbangan = penerbanganService.getPenerbanganByID(id).get();
         List<PilotPenerbanganModel> listPilotPenerbangan = penerbangan.getListPilotPenerbangan();
@@ -58,10 +61,16 @@ public class PenerbanganController {
             @PathVariable Long idPenerbangan,
             @ModelAttribute PilotPenerbanganModel pilotpenerbangan,
             Model model) {
-
-//        pilotpenerbangan.setTanggal_penugasan();
+        PenerbanganModel penerbangan = penerbanganService.getPenerbanganByID(idPenerbangan).get();
+        pilotpenerbangan.setPenerbangan(penerbangan);
+//        String namaPilot = pilotService.getPilotByIdPilot(idpilot).getNamaPilot();
+        PilotModel pilotini = pilotpenerbangan.getPilot();
+        String namaPilot = pilotini.getNamaPilot();
+        String kodePenerbangan = penerbangan.getKode();
         pilotPenerbanganService.addPilotPenerbangan(pilotpenerbangan);
 
+        model.addAttribute("namaPilot",namaPilot);
+        model.addAttribute("kodePenerbangan",kodePenerbangan);
         return "add-pilotpenerbangan";
 
 

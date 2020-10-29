@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -19,6 +21,11 @@ public class PilotPenerbanganServiceImpl implements  PilotPenerbanganService{
 
     @Override
     public void addPilotPenerbangan(PilotPenerbanganModel pilotPenerbangan){
+        LocalDate now = LocalDate.now();
+        pilotPenerbangan.setTanggal_penugasan(convertToDateViaSqlDate(now));
         pilotPenerbanganDB.save(pilotPenerbangan);
+    }
+    public Date convertToDateViaSqlDate(LocalDate dateToConvert) {
+        return java.sql.Date.valueOf(dateToConvert);
     }
 }
