@@ -148,6 +148,46 @@ public class PilotController {
 
     }
 
+    @RequestMapping(value = "/cari/pilot/penerbangan-terbanyak", method = RequestMethod.GET)
+    public String cariPilotTerbanyak(Model model) {
+
+        List <MaskapaiModel> listMaskapai = maskapaiService.getAllMaskapai();
+        model.addAttribute("listMaskapai", listMaskapai);
+
+        return "cari-pilot-terbanyak";
+    }
+
+    @RequestMapping(value = "/cari/pilot/bulan-ini", method = RequestMethod.GET)
+    public String cariPilotBulanIni(Model model) {
+
+//        List <MaskapaiModel> listMaskapai = maskapaiService.getAllMaskapai();
+        List<PilotPenerbanganModel> listPilotPenerbangan = pilotPenerbanganService.getPilotPenerbanganList();
+        List<PilotPenerbanganModel> listPilothu = pilotPenerbanganService.pilotBulanIni(listPilotPenerbangan);
+        List<PilotModel> listPilot = pilotPenerbanganService.getListPilot(listPilothu);
+        model.addAttribute("listPilot", listPilot);
+
+        return "cari-pilotbulanini";
+    }
+
+//    @RequestMapping(path = "/cari/pilot/bulan-ini", method = RequestMethod.GET)
+//    public String ExpiredMed(Model model){
+//        GudangModel gudang = gudangService.getGudangbyId(idGudang).get();
+//
+//        List<GudangObatModel> listGudangObat = gudang.getListGudangobat();
+//
+//        listGudangObat = gudangObatService.sortbyDate(listGudangObat);
+//
+//        model.addAttribute("gudangObatList", listGudangObat);
+//
+//        return "pilot-bulan-ini";
+//    }
+
+
+
+
+
+
+
 
 
 }

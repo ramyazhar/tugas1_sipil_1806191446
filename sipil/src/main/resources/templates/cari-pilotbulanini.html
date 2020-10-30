@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>View All Pilot</title>
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+<body>
+<nav th:replace="fragments/fragment :: navbar"></nav>
+<table class="table" style="margin-top: 20px">
+    <tr class="table-dark">
+    Daftar Pilot Pada Penerbangan bulan Ini
+    </tr>
+    <thead>
+    <tr>
+        <th scope="col">No</th>
+        <th scope="col">Nama</th>
+        <th scope="col">Nip</th>
+        <th scope="col">tanggal Lahir</th>
+        <th scope="col">Jenis Kelamin</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each = "pilot, iterationStatus: ${listPilot}">
+        <td th:text="${iterationStatus.count}"></td>
+        <td th:text ="${pilot.namaPilot}"> </td>
+        <td th:text="${pilot.nip}"></td>
+        <td th:text="${#dates.format(pilot.tanggal_lahir, 'dd/MM/yyyy')}"></td>
+        <td>
+            <div th:if="${pilot.jenis_kelamin == 1}">Laki-laki</div>
+            <div th:if="${pilot.jenis_kelamin == 2}">Perempuan</div>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
