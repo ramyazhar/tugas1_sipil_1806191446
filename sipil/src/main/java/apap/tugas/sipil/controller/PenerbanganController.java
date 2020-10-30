@@ -47,9 +47,7 @@ public class PenerbanganController {
 
         PilotPenerbanganModel pilotPenerbangan = new PilotPenerbanganModel();
         PenerbanganModel penerbanganModelini = penerbanganService.getPenerbanganByID(id).get();
-        System.out.println(penerbanganModelini.getId());
         pilotPenerbangan.setPenerbangan(penerbanganModelini);
-        System.out.println(pilotPenerbangan.getPenerbangan().getId());
         List<PilotModel> listPilot = pilotService.getPilotList();
         PenerbanganModel penerbangan = penerbanganService.getPenerbanganByID(id).get();
         List<PilotPenerbanganModel> listPilotPenerbangan = penerbangan.getListPilotPenerbangan();

@@ -24,6 +24,10 @@ public interface PilotService {
 
     List<PilotModel> cariPilotSekolah(Long idSekolah);
 
+    List<PilotModel> getBest3Pilot(List<PilotModel> allPilot);
+
+    List<PilotModel> getListPilotByKodePenerbangan(String kodenya);
+
 //
 //    void removePilot(PilotModel pilot);
 

@@ -17,7 +17,12 @@ public class AkademiServiceImpl implements AkademiService{
 
     @Override
     public AkademiModel getAkademiById(Long id){
-        return akademiDB.findById(id).get();
+        try{
+            return akademiDB.findById(id).get();
+        }catch (NoSuchElementException e){
+            return null;
+        }
+
     }
 
     @Override

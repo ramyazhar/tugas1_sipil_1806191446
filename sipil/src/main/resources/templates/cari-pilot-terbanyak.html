@@ -12,7 +12,7 @@
 <div class="container">
 
     <table class="table">
-        <form th:action="@{/cari/pilot}" method="GET">
+        <form th:action="@{/cari/pilot/penerbangan-terbanyak}" method="GET">
             <thead>
             <tr>
                 <td> Pilih Kode Maskapai </td>
@@ -52,7 +52,7 @@
             <td th:text="${iterationStatus.count}"></td>
             <td th:text="${pilot.namaPilot}"></td>
             <td th:text="${pilot.nip}"></td>
-            <td> blm </td>
+            <td th:text="${#lists.size(pilot.listPilotPenerbangan)}"></td>
         </tr>
         </tbody>
     </table>

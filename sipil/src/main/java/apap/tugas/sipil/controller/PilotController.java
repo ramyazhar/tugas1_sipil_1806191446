@@ -20,6 +20,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class PilotController {
@@ -111,52 +112,41 @@ public class PilotController {
             @RequestParam(required = false, value = "kodeMaskapai") String kodeMaskapai,
             @RequestParam(required = false,value = "idSekolah") Long idSekolah,
             Model model){
-        System.out.println(kodeMaskapai);
 
-        System.out.println(idSekolah);
+        MaskapaiModel maskapai = maskapaiService.getMaskapaiByKode(kodeMaskapai);
         List<MaskapaiModel> listMaskapai = maskapaiService.getAllMaskapai();
         List<AkademiModel> listAkademi = akademiService.getAllAkademi();
-        if (kodeMaskapai != null && idSekolah != null) {
-            System.out.println("masuk 22nya");
+        if (maskapai != null && idSekolah !=null) {
+
             Long idmaskapai = maskapaiService.getIdMaskapaibyKode(kodeMaskapai);
             List<PilotModel> listPilot = pilotService.cariPilot(idmaskapai, idSekolah);
             model.addAttribute("listMaskapai", listMaskapai);
             model.addAttribute("listAkademi", listAkademi);
             model.addAttribute("listPilot", listPilot);
             return "cari-pilot";
-        }if (kodeMaskapai != null && idSekolah ==null){
-            System.out.println("masuk kodemaskapai");
+        }if (maskapai != null && idSekolah ==null){
+
             Long idmaskapai2 = maskapaiService.getIdMaskapaibyKode(kodeMaskapai);
             List<PilotModel> listPilot = pilotService.cariPilotMaskapai(idmaskapai2);
             model.addAttribute("listMaskapai", listMaskapai);
             model.addAttribute("listAkademi", listAkademi);
             model.addAttribute("listPilot", listPilot);
             return "cari-pilot";
-        }if (idSekolah !=null && kodeMaskapai == null){
-            System.out.println("masuk idsekolahdoang");
+        }if (idSekolah != null && maskapai == null){
+
             List<PilotModel> listPilot = pilotService.cariPilotSekolah(idSekolah);
             model.addAttribute("listMaskapai", listMaskapai);
             model.addAttribute("listAkademi", listAkademi);
             model.addAttribute("listPilot", listPilot);
             return "cari-pilot";
         }else{
-            System.out.println("masuk sini");
+
             model.addAttribute("listMaskapai", listMaskapai);
             model.addAttribute("listAkademi", listAkademi);
             return "cari-pilot";
         }
 
     }
-
-    @RequestMapping(value = "/cari/pilot/penerbangan-terbanyak", method = RequestMethod.GET)
-    public String cariPilotTerbanyak(Model model) {
-
-        List <MaskapaiModel> listMaskapai = maskapaiService.getAllMaskapai();
-        model.addAttribute("listMaskapai", listMaskapai);
-
-        return "cari-pilot-terbanyak";
-    }
-
     @RequestMapping(value = "/cari/pilot/bulan-ini", method = RequestMethod.GET)
     public String cariPilotBulanIni(Model model) {
 
@@ -169,24 +159,37 @@ public class PilotController {
         return "cari-pilotbulanini";
     }
 
-//    @RequestMapping(path = "/cari/pilot/bulan-ini", method = RequestMethod.GET)
-//    public String ExpiredMed(Model model){
-//        GudangModel gudang = gudangService.getGudangbyId(idGudang).get();
-//
-//        List<GudangObatModel> listGudangObat = gudang.getListGudangobat();
-//
-//        listGudangObat = gudangObatService.sortbyDate(listGudangObat);
-//
-//        model.addAttribute("gudangObatList", listGudangObat);
-//
-//        return "pilot-bulan-ini";
-//    }
+    @RequestMapping(value = "/cari/pilot/penerbangan-terbanyak", method = RequestMethod.GET)
+    public String cariPilotTerbanyak(Model model) {
+
+        List<MaskapaiModel> listMaskapai = maskapaiService.getAllMaskapai();
+
+        model.addAttribute("listMaskapai", listMaskapai);
 
 
 
+        return "cari-pilot-terbanyak";
+    }
 
+    @RequestMapping(value = "/cari/pilot/penerbangan-terbanyak", method = RequestMethod.GET, params= {"kodeMaskapai"})
+    public String cariPilotTerbanyakParam(
+            @RequestParam(required = false, value = "kodeMaskapai") String kodeMaskapai,
+            Model model) {
+        System.out.println("masuk sini");
+        System.out.println(kodeMaskapai);
+        List<PilotModel> pilotnyaMaskapai = pilotService.getListPilotByKodePenerbangan(kodeMaskapai);
+        List<PilotModel> listPilot = pilotService.getBest3Pilot(pilotnyaMaskapai);
+        System.out.println("list ppilot = " + pilotnyaMaskapai.size());
+        for (PilotModel a: pilotnyaMaskapai
+             ) {
+            System.out.println(a.getNamaPilot());
+        }
+        List <MaskapaiModel> listMaskapai = maskapaiService.getAllMaskapai();
+        model.addAttribute("listMaskapai", listMaskapai);
+        model.addAttribute("listPilot", listPilot);
 
-
+        return "cari-pilot-terbanyak";
+    }
 
 
 

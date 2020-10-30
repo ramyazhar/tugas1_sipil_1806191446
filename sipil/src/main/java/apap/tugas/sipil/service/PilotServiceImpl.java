@@ -89,7 +89,7 @@ public class PilotServiceImpl implements PilotService{
         }
         return hasilCariPilot;
     }
-
+    @Override
     public List<PilotModel> cariPilotSekolah(Long idAkademi){
         System.out.println("masuk sini");
         Long idsimpenan = idAkademi;
@@ -103,6 +103,7 @@ public class PilotServiceImpl implements PilotService{
         }
         return hasilCariPilot;
     }
+    @Override
     public List<PilotModel> cariPilotMaskapai(Long idMaskapai){
         List<PilotModel> hasilCariPilot = new ArrayList<>();
         List<PilotModel> allPilot = getPilotList();
@@ -114,6 +115,50 @@ public class PilotServiceImpl implements PilotService{
         }
         return hasilCariPilot;
     }
+    @Override
+    public List<PilotModel> getListPilotByKodePenerbangan(String kodenya){
+        List<PilotModel> allPilot = pilotDB.findAll();
+        String dsaas = kodenya;
+        List<PilotModel> hasil = new ArrayList<>();
+        for (int i = 0; i < allPilot.size(); i++) {
+            if (allPilot.get(i).getMaskapai().getKode().equals(kodenya)){
+                hasil.add(allPilot.get(i));
+                System.out.println(allPilot.get(i).getNamaPilot());
+            }
+        }
+        return hasil;
+    }
+
+    @Override
+    public  List<PilotModel> getBest3Pilot(List<PilotModel> allPilot){
+
+        List<PilotModel> hasil = new ArrayList<>();
+
+        for (int i = allPilot.size()-1 ; i > 0 ; i--) {
+            int max = i;
+
+            for (int j = 0; j < i ; j++) {
+                if(allPilot.get(j).getListPilotPenerbangan().size() > allPilot.get(max).getListPilotPenerbangan().size()){
+                    max = j;
+                }
+            }
+            PilotModel T = allPilot.get(max);
+            allPilot.set(max,allPilot.get(i));
+            allPilot.set(i,T);
+        }
+
+        if (allPilot.size()>3 ){
+            for (int i = allPilot.size()-1; i > allPilot.size()-4; i--) {
+                hasil.add(allPilot.get(i));
+        }return hasil;
+        }else {
+            for (int i = allPilot.size()-1; i >0 ; i++) {
+                hasil.add(allPilot.get(i));
+            }
+            return hasil;
+        }
+    }
+
 
 
 
