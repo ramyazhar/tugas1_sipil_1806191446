@@ -37,8 +37,8 @@
                 <div th:if="${pilot.jenis_kelamin == 1}">Laki-laki</div>
                 <div th:if="${pilot.jenis_kelamin == 2}">Perempuan</div>
             </td>
-            <td><a th:href="@{/pilot/detil/}+${pilot.id}" class="btn btn-outline-info">lihat</a></td>
-            <td><a th:href="@{/pilot/ubah/}+${pilot.id}" class="btn btn-outline-secondary">Ubah</a></td>
+            <td><a th:href="@{/pilot/}+${pilot.nip}" class="btn btn-outline-info">lihat</a></td>
+            <td><a th:href="@{/pilot/ubah/}+${pilot.nip}" class="btn btn-outline-secondary">Ubah</a></td>
             <td><a th:href="@{/pilot/hapus/}+${pilot.id}" class="btn btn-outline-danger">Hapus</a></td>
 
 
@@ -50,6 +50,6 @@
     <a href="/">Kembali</a>
 </div>
 
-<nav th:replace="fragments/fragment :: footer" ></nav>
+<!--<nav th:replace="fragments/fragment :: footer" ></nav>-->
 </body>
 </html>

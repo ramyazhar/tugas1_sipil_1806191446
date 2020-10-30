@@ -71,7 +71,9 @@ public class PilotController {
             @PathVariable String nipPilot,
             Model model){
         PilotModel pilot = pilotService.getPilotByNipPilot(nipPilot);
+        List<PilotPenerbanganModel> listPilotPenerbangan = pilot.getListPilotPenerbangan();
         model.addAttribute("pilot",pilot);
+        model.addAttribute("listPilotPenerbangan", listPilotPenerbangan);
         return "view-by-nippilot";
     }
 

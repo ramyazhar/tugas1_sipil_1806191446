@@ -85,10 +85,34 @@
         <tr>
             <td></td>
             <td></td>
-            <td><a th:href="@{/pilot/ubah/}+${pilot.id}" class="btn btn-outline-secondary">Ubah</a></td>
+            <td><a th:href="@{/pilot/ubah/}+${pilot.nip}" class="btn btn-outline-secondary">Ubah</a></td>
             <td><a th:href="@{/pilot/hapus/}+${pilot.id}" class="btn btn-outline-danger">Hapus</a></td>
         </tr>
 
+        </tbody>
+    </table>
+    <h2>Detail Penerbangan</h2>
+    <table class="table">
+
+        <thead>
+        <tr>
+            <th>No</th>
+            <th>Kode Penerbangan</th>
+            <th>Waktu </th>
+            <th>Kota Asal</th>
+            <th>Kota Tujuan</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="penerbangan, iterationStatus : ${listPilotPenerbangan}">
+            <td th:text="${iterationStatus.count}"></td>
+            <td th:text="${penerbangan.getPenerbangan().kode}"></td>
+            <td th:text="${#dates.format(penerbangan.getPenerbangan().waktu, 'HH:mm ,  dd-MM-yyyy')}"></td>
+            <td th:text="${penerbangan.getPenerbangan().kota_asal}"></td>
+            <td th:text="${penerbangan.getPenerbangan().kota_tujuan}"></td>
+            <td><a th:href="@{/penerbangan/detil/}+${penerbangan.getPenerbangan().id}" class="btn btn-outline-info">lihat</a></td>
+        </tr>
         </tbody>
     </table>
 <!--    <table class="table">-->
