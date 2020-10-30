@@ -2,17 +2,57 @@
 <html lang="en" xmlns:th="http://thymeleaf.org">
 
 <head>
-    <meta charset="UTF-8">
-    <title> Home </title>
-    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
-            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-            crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/esm/popper.min.js"></script>
-    <script th:src="@{/js/bootstrap.min.js}"></script>
+    <title>Home</title>
+    <object th:include="fragments/fragment :: css " th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js " th:remove="tag"></object>
 </head>
+<style>
+    .container{
+        width: 500px;
+        height: 300px;
+        background-color: dark;
+        border-radius: 20px;
+    }
+    #text{
+        font-family: "Helvetica Neue";
+        margin-top: 20px;
+        margin-bottom: 20px;
+        text-align: center;
+        font-size: 30px;
+    }
+</style>
 <body>
-<h2> ini beranda </h2>
-<a th:href="@{/pilot/tambah}" class="btn btn-outline-primary"> Tambah pilot </a>
-</body>
+<nav th:replace="fragments/fragment :: navbar"></nav>
+<br><br><br><br>
+<div class="container">
+    <p id="text" class="text-white bg-dark">Selamat datang di SiPILOT!</p>
+</div>
+<div style="text-align: center">
+    <p>Daftar Fitur</p>
+    <br>
+    <a th:href="@{/pilot/}" class="btn btn-dark"> Pesawat </a>
+    <a th:href="@{/penerbangan}" class="btn btn-dark"> Penerbangan </a>
+    <a th:href="@{/cari/pilot}" class="btn btn-dark"> Cari </a>
+</div>
+
 </html>
+
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="en" xmlns:th="http://thymeleaf.org">-->
+
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title> Home </title>-->
+<!--    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">-->
+<!--    <script src="https://code.jquery.com/jquery-3.4.1.min.js"-->
+<!--            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="-->
+<!--            crossorigin="anonymous"></script>-->
+<!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/esm/popper.min.js"></script>-->
+<!--    <script th:src="@{/js/bootstrap.min.js}"></script>-->
+<!--</head>-->
+<!--<body>-->
+<!--<h2> ini beranda </h2>-->
+<!--<a th:href="@{/pilot/tambah}" class="btn btn-outline-primary"> Tambah pilot </a>-->
+<!--</body>-->
+<!--</html>-->

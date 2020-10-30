@@ -51,7 +51,11 @@
             <td></td>
             <td></td>
             <td><a th:href="@{/penerbangan/ubah/}+${penerbangan.id}" class="btn btn-outline-secondary">Ubah</a></td>
-            <td><a th:href="@{/penerbangan/remove/}+${penerbangan.id}" class="btn btn-outline-danger">Hapus</a></td>
+            <td><form th:action="@{/penerbangan/hapus}" method="post">
+                <input type="hidden" th:value="${penerbangan.id}"  name="penerbanganid" />
+                <button class="btn btn-outline-danger" type="submit">Hapus</button>
+            </form>
+            </td>
         </tr>
         </tbody>
     </table>

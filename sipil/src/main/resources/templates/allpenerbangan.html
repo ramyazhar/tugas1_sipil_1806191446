@@ -36,7 +36,7 @@
             <td th:text="${#dates.format(penerbangan.waktu, 'HH:mm dd-MM-yyyy')}"></td>
             <td th:text="${penerbangan.kota_asal}"></td>
             <td th:text="${penerbangan.kota_tujuan}"></td>
-            <td><a th:href="@{/penerbangan/detail/}+${penerbangan.id}" class="btn btn-outline-info">lihat</a></td>
+            <td><a th:href="@{/penerbangan/detil/}+${penerbangan.id}" class="btn btn-outline-info">lihat</a></td>
             <td><a th:href="@{/penerbangan/ubah/}+${penerbangan.id}" class="btn btn-outline-secondary">Ubah</a></td>
             <td><form th:action="@{/penerbangan/hapus}" method="post">
                 <input type="hidden" th:value="${penerbangan.id}"  name="penerbanganid" />

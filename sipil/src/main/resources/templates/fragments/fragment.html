@@ -63,8 +63,8 @@
     </head>
 
 <body>
-<nav th:fragment="navbar" class="navbar navbar-expand-lg navbar-light bg-light">
-    <a th:text="SIPILOT" class="navbar-brand font-weight-bold text-primary" th:href="@{/}"></a>
+<nav th:fragment="navbar" class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
+    <a th:text="SIPILOT" class="navbar-brand font-weight-bold text-white" th:href="@{/}"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
             aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -85,9 +85,6 @@
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="/cari/pilot/">Berdasarkan Maskapai/Akademi</a>
                     <a class="dropdown-item" href="/cari/pilot/penerbangan-terbanyak">Penerbangan Terbanyak</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                </div>
             </li>
             <li>
                 <a class="nav-item nav-link active" th:href="@{/cari/pilot/bulan-ini}">Bonus</a>

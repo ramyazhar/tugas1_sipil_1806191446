@@ -114,7 +114,6 @@ public class PenerbanganController {
     public String removePenerbangan(
            @RequestParam(required = false) Long penerbanganid,
             Model model){
-        System.out.println(penerbanganid);
         List<PilotPenerbanganModel> listPilotPenerbangan = penerbanganService.getPenerbanganByID(penerbanganid).get().getListPilotPenerbangan();
         PenerbanganModel penerbangan = penerbanganService.getPenerbanganByID(penerbanganid).get();
         if(listPilotPenerbangan.size() != 0 ){
