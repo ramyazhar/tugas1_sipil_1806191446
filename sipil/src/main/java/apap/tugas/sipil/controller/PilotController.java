@@ -1,5 +1,7 @@
 package apap.tugas.sipil.controller;
 
+import apap.tugas.sipil.model.AkademiModel;
+import apap.tugas.sipil.model.MaskapaiModel;
 import apap.tugas.sipil.model.PilotModel;
 import apap.tugas.sipil.model.PilotPenerbanganModel;
 import apap.tugas.sipil.service.AkademiService;
@@ -90,6 +92,60 @@ public class PilotController {
         PilotModel pilotUpdated = pilotService.updatePilot(pilot);
         model.addAttribute("pilot", pilotUpdated);
         return "update-pilot";
+    }
+
+    @RequestMapping(value = "/cari/pilot", method = RequestMethod.GET)
+    public String cariPilotKosong(Model model) {
+
+        List<AkademiModel> listAkademi = akademiService.getAllAkademi();
+        model.addAttribute("listAkademi", listAkademi);
+
+        List <MaskapaiModel> listMaskapai = maskapaiService.getAllMaskapai();
+        model.addAttribute("listMaskapai", listMaskapai);
+
+        return "cari-pilot";
+    }
+
+    @RequestMapping(value="/cari/pilot", method=RequestMethod.GET, params= {"kodeMaskapai","idSekolah"})
+    public String cariPilot(
+            @RequestParam(required = false, value = "kodeMaskapai") String kodeMaskapai,
+            @RequestParam(required = false,value = "idSekolah") Long idSekolah,
+            Model model){
+        System.out.println(kodeMaskapai);
+
+        System.out.println(idSekolah);
+        List<MaskapaiModel> listMaskapai = maskapaiService.getAllMaskapai();
+        List<AkademiModel> listAkademi = akademiService.getAllAkademi();
+        if (kodeMaskapai != null && idSekolah != null) {
+            System.out.println("masuk 22nya");
+            Long idmaskapai = maskapaiService.getIdMaskapaibyKode(kodeMaskapai);
+            List<PilotModel> listPilot = pilotService.cariPilot(idmaskapai, idSekolah);
+            model.addAttribute("listMaskapai", listMaskapai);
+            model.addAttribute("listAkademi", listAkademi);
+            model.addAttribute("listPilot", listPilot);
+            return "cari-pilot";
+        }if (kodeMaskapai != null && idSekolah ==null){
+            System.out.println("masuk kodemaskapai");
+            Long idmaskapai2 = maskapaiService.getIdMaskapaibyKode(kodeMaskapai);
+            List<PilotModel> listPilot = pilotService.cariPilotMaskapai(idmaskapai2);
+            model.addAttribute("listMaskapai", listMaskapai);
+            model.addAttribute("listAkademi", listAkademi);
+            model.addAttribute("listPilot", listPilot);
+            return "cari-pilot";
+        }if (idSekolah !=null && kodeMaskapai == null){
+            System.out.println("masuk idsekolahdoang");
+            List<PilotModel> listPilot = pilotService.cariPilotSekolah(idSekolah);
+            model.addAttribute("listMaskapai", listMaskapai);
+            model.addAttribute("listAkademi", listAkademi);
+            model.addAttribute("listPilot", listPilot);
+            return "cari-pilot";
+        }else{
+            System.out.println("masuk sini");
+            model.addAttribute("listMaskapai", listMaskapai);
+            model.addAttribute("listAkademi", listAkademi);
+            return "cari-pilot";
+        }
+
     }
 
 

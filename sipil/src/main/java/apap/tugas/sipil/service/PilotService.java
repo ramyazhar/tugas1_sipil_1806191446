@@ -17,6 +17,13 @@ public interface PilotService {
     PilotModel getPilotByIdPilot(Long idPilot);
 
     PilotModel updatePilot(PilotModel pilot);
+
+    List<PilotModel> cariPilot(Long idMaskapai, Long idAkademi);
+
+    List<PilotModel> cariPilotMaskapai(Long idmaskapai);
+
+    List<PilotModel> cariPilotSekolah(Long idSekolah);
+
 //
 //    void removePilot(PilotModel pilot);
 

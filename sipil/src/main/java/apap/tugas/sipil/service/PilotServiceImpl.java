@@ -74,6 +74,48 @@ public class PilotServiceImpl implements PilotService{
                 format.substring(0,2) + format.substring(3,5) + taunnip + random;
         return nip;
     }
+
+    @Override
+    public List<PilotModel> cariPilot(Long idMaskapai, Long idAkademi){
+        List<PilotModel> hasilCariPilot = new ArrayList<>();
+        List<PilotModel> allPilot = getPilotList();
+        for (int i = 0; i < allPilot.size(); i++) {
+            if (allPilot.get(i).getMaskapai().getId().equals(idMaskapai)){
+                if (allPilot.get(i).getAkademi().getId().equals(idAkademi)){
+                    hasilCariPilot.add(allPilot.get(i));
+                }
+            }
+        }
+        return hasilCariPilot;
+    }
+
+    public List<PilotModel> cariPilotSekolah(Long idAkademi){
+        System.out.println("masuk sini");
+        Long idsimpenan = idAkademi;
+        List<PilotModel> hasilCariPilot = new ArrayList<>();
+        List<PilotModel> allPilot = getPilotList();
+        for (int i = 0; i < allPilot.size(); i++) {
+                if (allPilot.get(i).getAkademi().getId().equals(idsimpenan)){
+                    hasilCariPilot.add(allPilot.get(i));
+                    System.out.println("di add");
+                }
+        }
+        return hasilCariPilot;
+    }
+    public List<PilotModel> cariPilotMaskapai(Long idMaskapai){
+        List<PilotModel> hasilCariPilot = new ArrayList<>();
+        List<PilotModel> allPilot = getPilotList();
+        for (int i = 0; i < allPilot.size(); i++) {
+            if (allPilot.get(i).getMaskapai().getId().equals(idMaskapai)){
+                hasilCariPilot.add(allPilot.get(i));
+            }
+
+        }
+        return hasilCariPilot;
+    }
+
+
+
     public static class RandomString {
 
         // function to generate a random string of length n

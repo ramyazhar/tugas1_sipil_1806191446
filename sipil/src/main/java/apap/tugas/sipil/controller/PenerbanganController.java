@@ -1,12 +1,8 @@
 package apap.tugas.sipil.controller;
 
 
-import apap.tugas.sipil.model.PenerbanganModel;
-import apap.tugas.sipil.model.PilotModel;
-import apap.tugas.sipil.model.PilotPenerbanganModel;
-import apap.tugas.sipil.service.PenerbanganService;
-import apap.tugas.sipil.service.PilotPenerbanganService;
-import apap.tugas.sipil.service.PilotService;
+import apap.tugas.sipil.model.*;
+import apap.tugas.sipil.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -17,6 +13,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+
 
 @Controller
 public class PenerbanganController {
@@ -30,6 +27,12 @@ public class PenerbanganController {
 
     @Autowired
     private PilotService pilotService;
+
+    @Autowired
+    private MaskapaiService maskapaiService;
+
+    @Autowired
+    private AkademiService akademiService;
 
     @GetMapping("/penerbangan/tambah")
     public String addPenerbanganFormPage(Model model){
@@ -63,7 +66,6 @@ public class PenerbanganController {
             Model model) {
         PenerbanganModel penerbangan = penerbanganService.getPenerbanganByID(idPenerbangan).get();
         pilotpenerbangan.setPenerbangan(penerbangan);
-//        String namaPilot = pilotService.getPilotByIdPilot(idpilot).getNamaPilot();
         PilotModel pilotini = pilotpenerbangan.getPilot();
         String namaPilot = pilotini.getNamaPilot();
         String kodePenerbangan = penerbangan.getKode();
@@ -74,21 +76,6 @@ public class PenerbanganController {
         return "add-pilotpenerbangan";
 
 
-        //        PilotPenerbanganModel pilotPenerbangan = new PilotPenerbanganModel();
-//        List<PilotPenerbanganModel> listPilotPenerbanganModel = penerbangan.getListPilotPenerbangan();
-//
-//        pilotPenerbangan.setPilot(pilot);
-//        pilotPenerbangan.setTanggal_penugasan(penerbangan.getWaktu());
-//        pilotPenerbangan.setPenerbangan(penerbangan);
-//        listPilotPenerbanganModel.add(pilotPenerbangan);
-//        pilot.setListPilotPenerbangan(listPilotPenerbanganModel);
-//
-//
-//        pilotPenerbanganService.addPilotPenerbangan(pilotPenerbangan);
-//        List<PilotModel> listPilot = pilotService.getPilotList();
-//        model.addAttribute("penerbangan", penerbangan);
-//        model.addAttribute("listPilot", listPilot);
-//        model.addAttribute("listPilotPenerbangan", listPilotPenerbanganModel);
     }
 
     @GetMapping("/penerbangan")
@@ -146,15 +133,6 @@ public class PenerbanganController {
     }
 
 
-//    @PostMapping("/penerbangan/{idPenerbangan}/pilot/tambah")
-//    public String TambahPilotPenerbanganSubmit(
-//            @ModelAttribute PenerbanganModel penerbangan,PilotModel pilot,
-//            Model model
-//    ){
-//
-//        model.addAttribute("pilot", pilot);
-//        return "submit-pilotpenerbangan";
-//    }
 
 
 

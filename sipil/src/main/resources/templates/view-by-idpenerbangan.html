@@ -75,13 +75,12 @@
     </table>
 
     <form th:action="@{/penerbangan/{penerbanganid}/pilot/tambah(penerbanganid=${penerbangan.id})}"th:object="${pilotPenerbangan}" method = "POST">
-
-<!--        <tr th:each="pilot, iterationStatus : ${listPilot}">-->
             <select th:value="${pilotPenerbangan.pilot}" th:field="${pilotPenerbangan.pilot}">
                 <option th:each="pilot : ${listPilot}" th:text="${pilot.namaPilot}" th:value="${pilot.id}" ></option>
             </select>
         <button type="submit">Tambah Pilot</button>
     </form>
+
     <h2>Daftar Pilot</h2>
     <table class="table">
         <thead>
