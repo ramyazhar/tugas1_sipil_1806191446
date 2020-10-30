@@ -1,3 +1,48 @@
+<!--<!DOCTYPE html>-->
+
+<!--<html lang="en" xmlns:th="http://thymeleaf.org">-->
+
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title> Home </title>-->
+
+<!--    <head th:fragment="css">-->
+<!--        <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">-->
+<!--    </head>-->
+<!--    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>-->
+<!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/esm/popper.min.js"></script>-->
+<!--    <script th:src="@{/js/bootstrap.min.js}"></script>-->
+
+<!--    <head th:fragment="js">-->
+
+<!--    </head>-->
+
+<!--<body>-->
+<!--<nav th:fragment="navbar" class="navbar navbar-expand-lg navbar-light bg-light">-->
+<!--    <a th:text="traveloke" class="navbar-brand font-weight-bold text-primary" href="#"></a>-->
+<!--    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"-->
+<!--            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">-->
+<!--        <span class="navbar-toggler-icon"></span>-->
+<!--    </button>-->
+
+<!--    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">-->
+<!--        <div class="navbar-nav">-->
+<!--            <a class="nav-item nav-link active" th:href="@{/}">Home <span class="sr-only">(current)</span> </a>-->
+<!--        </div>-->
+<!--        <div class="navbar-text ml-auto"></div>-->
+<!--    </div>-->
+<!--</nav>-->
+<!--<nav th:fragment="footer" class="navbar fixed-bottom navbar-light bg-light">-->
+<!--    <h2 th:text="'Made with Love by Ramy Azhar'" class="navbar-brand text-primary"></h2>-->
+<!--    <div class="navbar-nav mr-auto">-->
+<!--        <h3 th:text="${#dates.format(#dates.createNow(), 'dd MMM yyyy HH:mm')}"></h3>-->
+<!--    </div>-->
+<!--</nav>-->
+<!--</body>-->
+
+<!--</html>-->
+
+
 <!DOCTYPE html>
 
 <html lang="en" xmlns:th="http://thymeleaf.org">
@@ -9,34 +54,48 @@
     <head th:fragment="css">
         <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
     </head>
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/esm/popper.min.js"></script>
-    <script th:src="@{/js/bootstrap.min.js}"></script>
-
     <head th:fragment="js">
-
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+                integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+                crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/esm/popper.min.js"></script>
+        <script th:src="@{/js/bootstrap.min.js}"></script>
     </head>
 
 <body>
 <nav th:fragment="navbar" class="navbar navbar-expand-lg navbar-light bg-light">
-    <a th:text="traveloke" class="navbar-brand font-weight-bold text-primary" href="#"></a>
+    <a th:text="SIPILOT" class="navbar-brand font-weight-bold text-primary" th:href="@{/}"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
             aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
 
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
-            <a class="nav-item nav-link active" th:href="@{/}">Home <span class="sr-only">(current)</span> </a>
-        </div>
-        <div class="navbar-text ml-auto"></div>
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-item nav-link active" th:href="@{/pilot}">Pilot </a>
+            </li>
+            <li>
+                <a class="nav-item nav-link active" th:href="@{/penerbangan}">Penerbangan </a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Cari
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="/cari/pilot/">Berdasarkan Maskapai/Akademi</a>
+                    <a class="dropdown-item" href="#">Penerbangan Terbanyak</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+            </li>
+            <li>
+                <a class="nav-item nav-link active" th:href="@{/cari/pilot/bulan-ini}">Bonus</a>
+            </li>
+        </ul>
     </div>
-</nav>
-<nav th:fragment="footer" class="navbar fixed-bottom navbar-light bg-light">
-    <h2 th:text="'Made with Love by Ramy Azhar'" class="navbar-brand text-primary"></h2>
-    <div class="navbar-nav mr-auto">
-        <h3 th:text="${#dates.format(#dates.createNow(), 'dd MMM yyyy HH:mm')}"></h3>
     </div>
+
 </nav>
 </body>
 
