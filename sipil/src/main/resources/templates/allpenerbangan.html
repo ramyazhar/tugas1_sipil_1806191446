@@ -9,6 +9,9 @@
 <body>
 <nav th:replace="fragments/fragment :: navbar"></nav>
 <div class="container">
+    <div>
+        <a th:href="@{/penerbangan/tambah}" class="btn btn-outline-secondary">+Tambah Penerbangan</a>
+    </div>
     <h2>Daftar Penerbangan</h2>
 
     <table class="table">
@@ -48,6 +51,5 @@
     <a href="/">Kembali</a>
 </div>
 
-<nav th:replace="fragments/fragment :: footer" ></nav>
 </body>
 </html>
