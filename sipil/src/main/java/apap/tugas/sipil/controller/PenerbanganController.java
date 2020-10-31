@@ -87,10 +87,8 @@ public class PenerbanganController {
     public String addPenerbanganSubmit(
             @ModelAttribute PenerbanganModel penerbangan,
             Model model) {
-
         penerbanganService.addPenerbangan(penerbangan);
-
-        model.addAttribute("penerbangan", penerbangan);
+        model.addAttribute("idPenerbangan", penerbangan.getId());
         return "add-penerbangan";
     }
 

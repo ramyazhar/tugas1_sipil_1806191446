@@ -2,18 +2,42 @@
 <html xmlns:th="http://thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>View All Pilot</title>
+    <title>View All Penerbangan</title>
     <object th:include="fragments/fragment :: css" th:remove="tag"></object>
     <object th:include="fragments/fragment :: js" th:remove="tag"></object>
 </head>
+<style>
+    .layout{
+        text-align: center;
+        padding-top: 20px;
+        padding-left: 100px;
+        padding-right: 100px;
+    }
+    .button{
+        text-align: left;
+        margin-top: 80px;
+        margin-left: 100px;
+        color: white;
+
+    }
+    .judul{
+        background-color: #002752;
+        font-size: 27px;
+        color: white;
+        font-weight: 400;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+</style>
 <body>
 <nav th:replace="fragments/fragment :: navbar"></nav>
+<section>
 <div class="container">
-    <div>
-        <a th:href="@{/penerbangan/tambah}" class="btn btn-outline-secondary">+Tambah Penerbangan</a>
-    </div>
-    <h2>Daftar Penerbangan</h2>
-
+    <td>
+        <a  class="btn btn-sm button" th:href="@{/penerbangan/tambah}" style="background-color: #117a8b">+Tambah Penerbangan</a>
+    </td>
+    <div class="layout">
+    <div class="judul">Daftar Penerbangan</div>
     <table class="table">
         <thead>
         <tr>
@@ -47,9 +71,8 @@
         </tbody>
     </table>
 
-    <br><br>
-    <a href="/">Kembali</a>
 </div>
-
+</div>
+</section>
 </body>
 </html>

@@ -177,14 +177,10 @@ public class PilotController {
     public String cariPilotTerbanyakParam(
             @RequestParam(required = false, value = "kodeMaskapai") String kodeMaskapai,
             Model model) {
-        System.out.println("masuk sini");
-        System.out.println(kodeMaskapai);
         List<PilotModel> pilotnyaMaskapai = pilotService.getListPilotByKodePenerbangan(kodeMaskapai);
         List<PilotModel> listPilot = pilotService.getBest3Pilot(pilotnyaMaskapai);
-        System.out.println("list ppilot = " + pilotnyaMaskapai.size());
         for (PilotModel a: pilotnyaMaskapai
              ) {
-            System.out.println(a.getNamaPilot());
         }
         List <MaskapaiModel> listMaskapai = maskapaiService.getAllMaskapai();
         model.addAttribute("listMaskapai", listMaskapai);

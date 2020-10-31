@@ -2,10 +2,21 @@
 <html xmlns:th="http://thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>View All Pilot</title>
+    <title>Cari Pilot Terbaik</title>
     <object th:include="fragments/fragment :: css" th:remove="tag"></object>
     <object th:include="fragments/fragment :: js" th:remove="tag"></object>
 </head>
+<style>
+    .judul{
+        text-align: center;
+        background-color: #002752;
+        font-size: 27px;
+        color: white;
+        font-weight: 400;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+</style>
 <body>
 <nav th:replace="fragments/fragment :: navbar"></nav>
 
@@ -36,7 +47,7 @@
             </tbody>
         </form>
     </table>
-    <h2>Daftar 3 Pilot terbaik beradasarkan Jumlah Penerbangan Terbanyak</h2>
+    <div class="judul">Daftar 3 Pilot terbaik beradasarkan Jumlah Penerbangan Terbanyak</div>
 
     <table class="table">
         <thead>

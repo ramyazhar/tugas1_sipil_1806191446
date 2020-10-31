@@ -38,14 +38,23 @@ public class PilotPenerbanganServiceImpl implements  PilotPenerbanganService{
         List<PilotPenerbanganModel> hasilbulanIni= new ArrayList<>();
         LocalDate thisDate = LocalDate.now();
         Integer bulanini = thisDate.getMonthValue();
+        Integer tanggalini = thisDate.getDayOfMonth();
+        Integer bulanlalu = bulanini-1;
 
         for (PilotPenerbanganModel pilot : listPilotPenerbangan) {
             SimpleDateFormat formater = new SimpleDateFormat("MM");
+            SimpleDateFormat formater2 = new SimpleDateFormat("dd");
             Integer bulanPilot = Integer.valueOf(formater.format(pilot.getPenerbangan().getWaktu()));
-            boolean bulanpenentu = bulanini == bulanPilot;
+            Integer tanggalPilot = Integer.valueOf(formater2.format(pilot.getPenerbangan().getWaktu()));
 
-            if (bulanpenentu == true ){
-                hasilbulanIni.add(pilot);
+            if (bulanini == bulanPilot){
+                if (tanggalini >= tanggalPilot){
+                    hasilbulanIni.add(pilot);
+                }
+            }if (bulanlalu == bulanPilot){
+                if (tanggalini<= tanggalPilot){
+                    hasilbulanIni.add(pilot);
+                }
             }
         }
         return hasilbulanIni;

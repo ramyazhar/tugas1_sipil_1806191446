@@ -2,16 +2,35 @@
 <html xmlns:th="http://thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>View All Pilot</title>
+    <title>Cari Pilot 1 Bulan Terakhir</title>
     <object th:include="fragments/fragment :: css" th:remove="tag"></object>
     <object th:include="fragments/fragment :: js" th:remove="tag"></object>
 </head>
+<style>
+    .layout{
+        text-align: center;
+        padding-top: 20px;
+        padding-left: 100px;
+        padding-right: 100px;
+    }
+
+    .judul{
+        background-color: #002752;
+        font-size: 27px;
+        color: white;
+        font-weight: 400;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+</style>
 <body>
 <nav th:replace="fragments/fragment :: navbar"></nav>
-<table class="table" style="margin-top: 20px">
-    <tr class="table-dark">
+<div class="layout">
+<div class="judul">
     Daftar Pilot Pada Penerbangan bulan Ini
-    </tr>
+</div>
+<table class="table" style="margin-top: 20px">
+
     <thead>
     <tr>
         <th scope="col">No</th>
@@ -34,5 +53,6 @@
     </tr>
     </tbody>
 </table>
+</div>
 </body>
 </html>

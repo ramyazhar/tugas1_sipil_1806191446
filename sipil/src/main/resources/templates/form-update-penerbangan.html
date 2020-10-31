@@ -2,28 +2,80 @@
 <html lang="en" xmlns:th="http://thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Update Data Hotel</title>
+    <title>Form Update Penerbangan</title>
     <object th:include="fragments/fragment :: css" th:remove="tag"></object>
     <object th:include="fragments/fragment :: js" th:remove="tag"></object>
 </head>
+<style>
+    .layout{
+        text-align: center;
+        padding-top: 50px;
+        padding-left: 450px;
+        padding-right: 450px;
+        padding-bottom: 50px;
+    }
+
+    .judul{
+        background-color: #002752;
+        font-size: 27px;
+        color: white;
+        font-weight: 400;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+    .isibox{
+        box-shadow:  0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        padding-right: 7%;
+        padding-left: 7%;
+    }
+
+    .rightside{
+        text-align: right;
+        padding-bottom: 5%;
+    }
+
+    input, select {
+        width: 100%;
+        padding: 7px 15px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+    .formfield{
+        text-align: left;
+        color: #4e555b;
+    }
+
+</style>
 <body>
 <nav th:replace="fragments/fragment :: navbar"></nav>
-<h2>Change Pilot</h2>
+<div class="layout">
+<div class="judul">Ubah Penerbangan</div>
+<div class="isibox">
 <form th:action="@{/penerbangan/ubah}" th:object="${penerbangan}" method="POST">
     <input type="hidden" th:field="*{id}">
-    kode <br>
+    <div class="formfield">Kode</div>
     <input type="text" name="kode" th:field="*{kode}"/>
-    <br><br>
-    Waktu <br>
+    <br>
+    <div class="formfield">Waktu</div>
     <input type="datetime-local" name="waktu"  th:field="*{waktu}"/>
-    <br><br>
-    Kota Asal <br>
+    <br>
+    <div class="formfield">Kota Asal</div>
     <input type="text" name="kota_asal" th:field="*{kota_asal}"/>
-    <br><br>
-    Kota tujuan <br>
+    <br>
+    <div class="formfield">Kota Tujuan</div>
     <input type="text" name="kota_tujuan" th:field="*{kota_tujuan}">
     <br><br>
-    <button type="submit" name="submit">Submit</button>
+    <div class="rightside">
+        <a th:href="@{/penerbangan}" class="btn" style="border-color: #002752"> Batal </a>
+        <button type="submit" class="btn text-light" style="background-color: #002752">Simpan</button>
+    </div>
 </form>
+    </div>
+</div>
 </body>
 </html>

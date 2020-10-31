@@ -2,58 +2,108 @@
 <html xmlns:th="http://thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>View All Pilot</title>
+    <title>Form Add Pilot</title>
     <object th:include="fragments/fragment :: css" th:remove="tag"></object>
     <object th:include="fragments/fragment :: js" th:remove="tag"></object>
 </head>
 <body>
-<nav th:replace="fragments/fragment :: navbar"></nav>
-<h2>Hello</h2>
-<h3>tambah pilot</h3>
-<form th:action="@{/pilot/tambah}"th:object="${pilot}" method = "POST">
-    Nama <br>
-    <input type="text" id="namapilot" name="namaPilot"/>
-    <br>
-    NIK <br>
-    <input type="text" name="nik"/>
-    <br>
-    tempat Lahir <br>
-    <input type="text" name="tempat_lahir"/>
-    <br>
-    Tanggal Lahir <br>
-    <input type="date" name="tanggal_lahir"/>
-    <br>
-    jenis Kelamin <br>
-    <select name="jenis_kelamin">
-        <option value="1">laki-laki</option>
-        <option value="2">perempuan</option>
-    </select>
-    <br>
-    Sekolah <br>
-    <select name="akademi.id">
-        <option value="1">Sekolah Terbang Tinggi</option>
-        <option value="2">Sekolah Angkasa Luar</option>
-        <option value="3">Sekolah Galaksi</option>
-        <option value="4">Sekolah Daun Hijau</option>
-        <option value="5">Sekolah Angkatan Udara</option>
-        <option value="6">Sekolah Angkasa Udara</option>
-    </select>
-    <br>
-    <br>
-    Maskapai <br>
-    <select name="maskapai.id">
-        <option value="1">LienAir</option>
-        <option value="2">SriAir</option>
-        <option value="3">AsiaAir</option>
-        <option value="4">GarudaAir</option>
-        <option value="5">FlyEmiret</option>
-        <option value="6">ButikAir</option>
-        <option value="7">JakAir</option>
-    </select>
-    <br>
-    <input type="hidden" th:value="${pilot.nip}" th:attr="name='nip'"/>
+<style>
+    .layout{
+        text-align: center;
+        padding-top: 50px;
+        padding-left: 450px;
+        padding-right: 450px;
+        padding-bottom: 50px;
+    }
 
-    <button type="submit">Submit</button>
-</form>
+    .judul{
+        background-color: #002752;
+        font-size: 27px;
+        color: white;
+        font-weight: 400;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+    .isibox{
+        box-shadow:  0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        padding-right: 7%;
+        padding-left: 7%;
+    }
+
+    .kanan{
+        text-align: right;
+    }
+
+    input, select {
+        width: 100%;
+        padding: 7px 15px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+
+    .namafield{
+        text-align: left;
+        color: #4e555b;
+    }
+
+</style>
+<nav th:replace="fragments/fragment :: navbar"></nav>
+<div class="layout">
+    <div class="judul">Tambah Pilot</div>
+    <div class="isibox">
+        <form th:action="@{/pilot/tambah}"th:object="${pilot}" method = "POST">
+            <br><br>
+            <div class="namafield">Nama</div>
+            <input type="text" name="namaPilot"/>
+            <br>
+            <div class="namafield">NIK</div>
+            <input type="number" name="nik"/>
+            <br>
+            <div class="namafield">Tempat Lahir</div>
+            <input type="text" name="tempat_lahir"/>
+            <br>
+            <div class="namafield">Tanggal Lahir</div>
+            <input type="date" pattern="yyyy-MM-dd" name="tanggal_lahir"/>
+            <br>
+            <div class="namafield">Jenis Kelamin</div>
+            <select name="jenis_kelamin">
+                <option value="1">Laki-Laki</option>
+                <option value="2">Perempuan</option>
+            </select>
+            <br>
+            <div class="namafield">Sekolah</div>
+                <select name="akademi.id">
+                    <option value="1">Sekolah Terbang Tinggi</option>
+                    <option value="2">Sekolah Angkasa Luar</option>
+                    <option value="3">Sekolah Galaksi</option>
+                    <option value="4">Sekolah Daun Hijau</option>
+                    <option value="5">Sekolah Angkatan Udara</option>
+                    <option value="6">Sekolah Angkasa Udara</option>
+                </select>
+            <br>
+            <div class="namafield">Maskapai</div>
+            <select name="maskapai.id">
+                        <option value="1">LienAir</option>
+                        <option value="2">SriAir</option>
+                        <option value="3">AsiaAir</option>
+                        <option value="4">GarudaAir</option>
+                        <option value="5">FlyEmiret</option>
+                        <option value="6">ButikAir</option>
+                        <option value="7">JakAir</option>
+                    </select>
+            <br><br>
+            <div class="kanan">
+                <a th:href="@{/pilot/}" class="btn" style="border-color: #002752"> Batal </a>
+                <button type="submit" class="btn text-light" style="background-color: #002752">Tambah</button>
+            </div>
+            <br><br>
+        </form>
+    </div>
+</div>
 </body>
 </html>

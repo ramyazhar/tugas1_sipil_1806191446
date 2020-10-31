@@ -2,31 +2,104 @@
 <html xmlns:th="http://thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>View All Pilot</title>
+    <title>Form Add Penerbangan</title>
     <object th:include="fragments/fragment :: css" th:remove="tag"></object>
     <object th:include="fragments/fragment :: js" th:remove="tag"></object>
 </head>
 <body>
-<nav th:replace="fragments/fragment :: navbar"></nav>
-<h2>Hello</h2>
-<h3>tambah penerbangan</h3>
-<form th:action="@{/penerbangan/tambah}"th:object="${penerbangan}" method = "POST">
-    Kode <br>
-    <input type="text" id="kode" name="kode"/>
-    <br>
-    Waktu <br>
-    <input type="datetime-local" name="waktu"/>
-    <br>
-    Kota Asal <br>
-    <input type="text" name="kota_asal"/>
-    <br>
-    Kota Tujuan <br>
-    <input type="text" name="kota_tujuan"/>
-    <br>
-    <br>
-<!--    <input type="hidden" th:value="${pilot.nip}" th:attr="name='nip'"/>-->
+<style>
+    .layout{
+        text-align: center;
+        padding-top: 50px;
+        padding-left: 450px;
+        padding-right: 450px;
+        padding-bottom: 50px;
+    }
 
-    <button type="submit">Submit</button>
-</form>
+    .judul{
+        background-color: #002752;
+        font-size: 27px;
+        color: white;
+        font-weight: 400;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+    .isi{
+        box-shadow:  0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        padding-right: 7%;
+        padding-left: 7%;
+    }
+
+    .kanan{
+        text-align: right;
+    }
+
+    input, select {
+        width: 100%;
+        padding: 7px 15px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+    .namafield{
+        text-align: left;
+        color: #4e555b;
+    }
+
+</style>
+<nav th:replace="fragments/fragment :: navbar"></nav>
+<div class="layout">
+    <div class="judul">Tambah Penerbangan</div>
+    <div class="isi">
+        <form th:action="@{/penerbangan/tambah}"th:object="${penerbangan}" method = "POST">
+            <br><br>
+            <div class="namafield">Kode</div>
+            <input type="text" name="kode"/>
+            <br>
+            <div class="namafield">Waktu</div>
+            <input type="datetime-local" name="waktu"/>
+            <br>
+            <div class="namafield">Kota Asal</div>
+            <input type="text" name="kota_asal"/>
+            <br>
+            <div class="namafield">Kota Tujuan</div>
+            <input type="text" name="kota_tujuan"/>
+            <br><br>
+            <div class="kanan">
+                <a th:href="@{/penerbangan/}" class="btn" style="border-color: #002752"> Batal </a>
+                <button type="submit" class="btn text-light" style="background-color: #002752">Tambah</button>
+            </div>
+            <br><br>
+        </form>
+    </div>
+</div>
 </body>
+
+<!--<body>-->
+<!--<nav th:replace="fragments/fragment :: navbar"></nav>-->
+<!--<h2>Hello</h2>-->
+<!--<h3>tambah penerbangan</h3>-->
+<!--<form th:action="@{/penerbangan/tambah}"th:object="${penerbangan}" method = "POST">-->
+<!--    Kode <br>-->
+<!--    <input type="text" id="kode" name="kode"/>-->
+<!--    <br>-->
+<!--    Waktu <br>-->
+<!--    <input type="datetime-local" name="waktu"/>-->
+<!--    <br>-->
+<!--    Kota Asal <br>-->
+<!--    <input type="text" name="kota_asal"/>-->
+<!--    <br>-->
+<!--    Kota Tujuan <br>-->
+<!--    <input type="text" name="kota_tujuan"/>-->
+<!--    <br>-->
+<!--    <br>-->
+<!--&lt;!&ndash;    <input type="hidden" th:value="${pilot.nip}" th:attr="name='nip'"/>&ndash;&gt;-->
+
+<!--    <button type="submit">Submit</button>-->
+<!--</form>-->
+<!--</body>-->
 </html>

@@ -2,13 +2,24 @@
 <html xmlns:th="http://thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>View All Pilot</title>
+    <title>Add Pilot berhasil</title>
     <object th:include="fragments/fragment :: css" th:remove="tag"></object>
     <object th:include="fragments/fragment :: js" th:remove="tag"></object>
 </head>
 <body>
+<style>
+    .teks{
+        font-size: 50px;
+        padding-top: 10%;
+        text-align: center;
+        padding-left: 7%;
+        padding-right: 7%;
+    }
+</style>
 <nav th:replace="fragments/fragment :: navbar"></nav>
-<h2 th:text="'pilot dengan nip ' + ${nipPilot} + ' berhasil ditambahkan.'"></h2>
-<a href="/">Kembali</a>
+<div class="text-center">
+    <h2 class="teks" th:text="'Pilot dengan NIP ' + ${nipPilot} + ' berhasil ditambahkan'"></h2>
+    <a href="/pilot/">Kembali ke Daftar Pilot</a>
+</div>
 </body>
 </html>
