@@ -2,7 +2,7 @@
 <html xmlns:th="http://thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>View All Pilot</title>
+    <title>View Pilot by NIP</title>
     <object th:include="fragments/fragment :: css" th:remove="tag"></object>
     <object th:include="fragments/fragment :: js" th:remove="tag"></object>
 </head>
@@ -115,147 +115,8 @@
         </tr>
         </tbody>
     </table>
-<!--    <table class="table">-->
-<!--        <thead>-->
-<!--        <tr>-->
-<!--            <th></th>-->
-<!--            <th></th>-->
-<!--            <th></th>-->
-<!--        </tr>-->
-<!--        </thead>-->
-<!--        <tbody>-->
-<!--        <tr>-->
-<!--            <td th:text="'ID' "></td>-->
-<!--            <td th:text="': '+ ${pilot.id}"></td>-->
-<!--            <td th:text=" "></td>-->
-<!--        </tr>-->
-<!--        <tr>-->
-<!--            <td th:text="'Nama' "></td>-->
-<!--            <td th:text="': '+ ${pilot.namaPilot}"></td>-->
-<!--            <td th:text=" "></td>-->
-<!--        </tr>-->
-<!--        <tr>-->
-<!--            <td th:text="'Nik' "></td>-->
-<!--            <td th:text="': '+ ${pilot.nik}"></td>-->
-<!--            <td th:text=" "></td>-->
-<!--        </tr>-->
-<!--        <tr>-->
-<!--            <td th:text="'Jenis Kelamin' "></td>-->
-<!--            <td>-->
-<!--                <div th:if="${pilot.jenis_kelamin == 1}">: Laki-laki</div>-->
-<!--                <div th:if="${pilot.jenis_kelamin == 2}">: Perempuan</div>-->
-<!--            </td>-->
-<!--            <td th:text=" "></td>-->
-<!--        </tr>-->
-<!--        <tr>-->
-<!--            <td th:text="'NIP' "></td>-->
-<!--            <td th:text="': '+ ${pilot.nip}"></td>-->
-<!--            <td th:text=" "></td>-->
-<!--        </tr>-->
-<!--        <tr>-->
-<!--            <td th:text="'Tempat Lahir' "></td>-->
-<!--            <td th:text="': '+ ${pilot.tempat_lahir}"></td>-->
-<!--            <td th:text=" "></td>-->
-<!--        </tr>-->
-<!--        <tr>-->
-<!--            <td th:text="'Tanggal Lahir' "></td>-->
-<!--            <td th:text="': '+ ${#dates.format(pilot.tanggal_lahir, 'dd/MM/yyyy')}"></td>-->
-<!--            <td th:text=" "></td>-->
-<!--        </tr>-->
-<!--        <tr>-->
-<!--            <td th:text="'Sekolah' "></td>-->
-<!--            <td>-->
-<!--                <div th:if="${pilot.akademi.id == 1}">: Sekolah Terbang Tinggi</div>-->
-<!--                <div th:if="${pilot.akademi.id == 2}">: Sekolah Angkasa Luar</div>-->
-<!--                <div th:if="${pilot.akademi.id == 3}">: Sekolah Galaksi</div>-->
-<!--                <div th:if="${pilot.akademi.id == 4}">: Sekolah Daun Hijau</div>-->
-<!--                <div th:if="${pilot.akademi.id == 5}">: Sekolah Angkatan Udara</div>-->
-<!--                <div th:if="${pilot.akademi.id == 6}">: Sekolah Angkasa Udara</div>-->
-<!--            </td>-->
-<!--            <td th:text=" "></td>-->
-<!--        </tr>-->
-<!--        <tr>-->
-<!--            <td th:text="'Maskapai' "></td>-->
-<!--            <td>-->
-<!--                <div th:if="${pilot.maskapai.id == 1}">: LienAir</div>-->
-<!--                <div th:if="${pilot.maskapai.id == 2}">: SriAir</div>-->
-<!--                <div th:if="${pilot.maskapai.id == 3}">: AsiaAir</div>-->
-<!--                <div th:if="${pilot.maskapai.id == 4}">: GarudaAir</div>-->
-<!--                <div th:if="${pilot.maskapai.id == 5}">: FlyEmiret</div>-->
-<!--                <div th:if="${pilot.maskapai.id == 6}">: ButikAir</div>-->
-<!--                <div th:if="${pilot.maskapai.id == 7}">: JakAir</div>-->
-<!--            </td>-->
-<!--            <td th:text=" "></td>-->
-<!--        </tr>-->
-<!--        <tr>-->
-<!--            <td></td>-->
-<!--            <td></td>-->
-<!--            <td><a th:href="@{/pilot/change/}+${pilot.id}" class="btn btn-outline-secondary">Ubah</a></td>-->
-<!--            <td><a th:href="@{/pilot/remove/}+${pilot.id}" class="btn btn-outline-danger">Hapus</a></td>-->
-<!--        </tr>-->
-
-<!--        </tbody>-->
-<!--    </table>-->
-
     <br><br>
     <a href="/">Kembali</a>
 </div>
-<!--<section>-->
-<!--    <h2>Detail Pilot</h2>-->
-<!--    <h3 th:text="'Id hotel: '+ ${hotel.id}"></h3>-->
-<!--    <h3 th:text="'Nama Hotel: '+ ${hotel.namaHotel}"></h3>-->
-<!--    <h3 th:text="'Alamat Hotel: '+ ${hotel.alamat}"></h3>-->
-<!--    <h3 th:text="'Nomor Telepon: '+ ${hotel.nomorTelepon}"></h3>-->
-<!--    <td><a th:href="@{/hotel/change/}+${hotel.id}">Change Data Hotel</a></td>-->
-<!--</section>-->
-<!--<section>-->
-<!--    <br>-->
-<!--    <td> <a th:href="@{/hotel/remove/}+${hotel.id}"> Delete Hotel </a> </td>-->
-<!--</section>-->
-<!--<section>-->
-<!--    <h2>Daftar kamar</h2>-->
-<!--    <div th:if="${hasKamar}">-->
-<!--        <form th:action="@{/kamar/delete}" th:object="${hotel}" method="POST">-->
-<!--            <table class="table">-->
-<!--                <thead>-->
-<!--                <tr>-->
-<!--                    <th>No</th>-->
-<!--                    <th>No Kamar</th>-->
-<!--                    <th>Nama Kamar</th>-->
-<!--                    <th>Tipe Kamar</th>-->
-<!--                    <th>Kapasitas Kamar</th>-->
-<!--                    <th>Aksi</th>-->
-<!--                    <th></th>-->
-<!--                </tr>-->
-<!--                </thead>-->
-<!--                <tbody>-->
-<!--                <tr th:each="kamar, iterationStatus : ${listKamar}">-->
-<!--                    <td th:text="${iterationStatus.count}"></td>-->
-<!--                    <td th:text="${kamar.noKamar}"></td>-->
-<!--                    <td th:text="${kamar.namaKamar}"></td>-->
-
-<!--                    <td>-->
-<!--                        <div th:if="${kamar.tipe == 0}">Deluxe</div>-->
-<!--                        <div th:if="${kamar.tipe == 1}">Executive</div>-->
-<!--                        <div th:if="${kamar.tipe == 2}">President Suite</div>-->
-<!--                    </td>-->
-
-<!--                    <td th:text="${kamar.kapasitasKamar}"></td>-->
-<!--                    <td><a th:href="@{/kamar/change/}+${kamar.noKamar}">Change Data Kamar</a></td>-->
-<!--                    <td>-->
-<!--                        <input type="checkbox" th:field="*{listKamar}" th:value="${kamar.noKamar}" />-->
-<!--                        <label th:for="${#ids.prev('listKamar')}">Hapus</label>-->
-<!--                    </td>-->
-<!--                </tr>-->
-<!--                </tbody>-->
-<!--            </table>-->
-<!--            <button type="submit" class="btn btn-sm btn-danger">Hapus yang dipilih</button>-->
-<!--        </form>-->
-<!--    </div>-->
-<!--    <div th:unless="${hasKamar}">-->
-<!--        <h2 th:text="'Hotel Belum Memiliki daftar kamar'"></h2>-->
-<!--    </div>-->
-<!--    <td><a th:href="@{/kamar/add/}+${hotel.id}">Add Kamar</a></td>-->
-<!--</section>-->
 </body>
 </html>

@@ -152,7 +152,6 @@ public class PilotController {
     @RequestMapping(value = "/cari/pilot/bulan-ini", method = RequestMethod.GET)
     public String cariPilotBulanIni(Model model) {
 
-//        List <MaskapaiModel> listMaskapai = maskapaiService.getAllMaskapai();
         List<PilotPenerbanganModel> listPilotPenerbangan = pilotPenerbanganService.getPilotPenerbanganList();
         List<PilotPenerbanganModel> listPilothu = pilotPenerbanganService.pilotBulanIni(listPilotPenerbangan);
         List<PilotModel> listPilot = pilotPenerbanganService.getListPilot(listPilothu);

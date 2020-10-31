@@ -7,10 +7,19 @@
     <object th:include="fragments/fragment :: js" th:remove="tag"></object>
 </head>
 <body>
+<style>
+    .teks{
+        font-size: 50px;
+        padding-top: 10%;
+        text-align: center;
+        padding-left: 7%;
+        padding-right: 7%;
+    }
+</style>
 <nav th:replace="fragments/fragment :: navbar"></nav>
-<h2>Update Penerbangan berhasil! </h2>
-
-<br><br>
-<a href="/">Kembali</a>
+<div class="text-center">
+    <h2 class="teks" th:text="'Penerbangan dengan id ' + ${penerbangan.id} + ' berhasil diubah'"></h2>
+    <a href="/penerbangan/">Kembali ke Daftar Penerbangan</a>
+</div>
 </body>
 </html>
